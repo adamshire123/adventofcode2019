@@ -1,5 +1,4 @@
 # Day 2: 1202 Program Alarm
-import sys
 
 initial_program = [1, 12, 2, 3, 1, 1, 2, 3, 1, 3, 4, 3, 1, 5, 0, 3, 2, 6, 1,
                    19, 1, 19, 5, 23, 2, 10, 23, 27, 2, 27, 13, 31, 1, 10, 31,
@@ -17,32 +16,12 @@ def intcode(program: list, pointer=0):
     if program[pointer] not in [1, 2, 99]:
         return("unknown Opcode")
     if program[pointer] == 99:
-<<<<<<< Updated upstream
-        print("halt and catch fire")
-        print(f"pointer: {pointer}")
-        print(program[pointer])
-        print(f"program: {program}")
-        return 0
-        
-=======
         return program[0]
->>>>>>> Stashed changes
     if program[pointer] == 1:
         # add next two indexes
         program[program[pointer+3]] = program[program[pointer+1]] + \
             program[program[pointer+2]]
         # move the pointer
-<<<<<<< Updated upstream
-    if program[pointer] == 2:
-        program[program[pointer+3]] = program[program[pointer+1]] * \
-            program[program[pointer+2]]
-    pointer = pointer + 4
-    intcode(program, pointer)
-
-
-def find(target):
-    
-=======
         pointer = pointer + 4
         intcode(program, pointer)
         return program[0]
@@ -55,24 +34,11 @@ def find(target):
 
 
 def seek(target):
->>>>>>> Stashed changes
     for noun in range(99):
         for verb in range(99):
             current_program = initial_program.copy()
             current_program[1] = noun
             current_program[2] = verb
-<<<<<<< Updated upstream
-            print(current_program[0:4])
-            result = intcode(current_program)
-            print(result)
-            if target == result:
-                print(f"noun: {noun} \n verb: {verb}")
-                sys.exit()
-
-
-if __name__ == "__main__":
-    find(4570637)
-=======
             result = intcode(current_program)
             if result == target:
                 print(f"noun: {noun} \nverb: {verb}\n\
@@ -81,4 +47,3 @@ solution: {100*noun + verb}")
 
 if __name__ == "__main__":
     seek(19690720)
->>>>>>> Stashed changes
